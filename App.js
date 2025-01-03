@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
       return res.status(500).send('Database connection not initialized');
     }
     const documents = await collection.find({}).toArray();
-    res.send(documents);
+    res.json(documents);
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).send('Error fetching data');
