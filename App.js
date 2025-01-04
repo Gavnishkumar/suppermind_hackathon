@@ -1,9 +1,12 @@
 const express = require('express');
+const dotenv= require('dotenv')
 const cors = require('cors');
+
+dotenv.config();
 const { default: connectDB } = require('./DB/Connection');
 const { DataAPIClient } = require("@datastax/astra-db-ts");
-const client = new DataAPIClient('AstraCS:UTMYsFZDhjFoCiQIlZJiKIoD:9c2d976166e1c3f908d3e93f24a320a4aceff48302f12699bbc6a059f118e936');
-const dbName = 'https://e4804280-a8a3-4f0c-ad46-3f46d7eb8b4f-us-east-2.apps.astra.datastax.com';
+const client = new DataAPIClient(process.env.DB_TOKEN);
+const dbName = process.env.DB_NAME;
 
 const app = express();
 app.use(cors());
